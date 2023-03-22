@@ -5,7 +5,7 @@
 
 - name: Generate Output
   ansible.builtin.debug:
-    msg: Group {{ items.name.displayname }} needs {{ items.name.members }}
+    msg: Group {{ item.name }} needs {{ item.name }}
   with_items: "{{ groupmembers }}"
 
 #- name: Ensure user vagrant is member of 'Domain Admins'
