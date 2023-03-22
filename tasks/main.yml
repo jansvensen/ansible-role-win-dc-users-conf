@@ -3,15 +3,6 @@
 ### Add users to groups
 #####################################
 
-- name: Generate Output
-  ansible.builtin.debug:
-    msg: Group {{ item.name }} needs {{ item.group }}
-  with_items: "{{ groupmembers }}"
-
-#####################################
-### Add users to groups
-#####################################
-
 - name: Add users to groups
   community.windows.win_domain_user:
     name: '{{ item.name }}'
