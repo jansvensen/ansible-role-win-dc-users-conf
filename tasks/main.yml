@@ -4,8 +4,10 @@
 #####################################
 
 - name: Add users to groups
-  community.windows.win_domain_user:
+  microsoft.ad.user:
     name: '{{ item.name }}'
-    groups: '{{ item.group }}'
+    groups: 
+        add: 
+            '{{ item.group }}'
     state: present
   with_items: "{{ dc_groupmember }}"
