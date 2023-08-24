@@ -22,7 +22,7 @@
     name: "{{ item.0.name | replace('##', item.1) }}"
     groups: 
         add: 
-            '{{ item.0.group }}'
+            "{{ item.0.group | replace('##', item.1) }}"
     state: present
   with_nested:
   - '{{ dc_groupmember_dynamic }}'
