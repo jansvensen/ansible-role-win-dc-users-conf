@@ -7,9 +7,8 @@
   microsoft.ad.user:
     name: '{{ item.name }}'
     groups: 
-        set: 
+        add: 
             '{{ item.group }}'
-    state: present
   with_items: "{{ dc_groupmember }}"
   when: dc_groupmember_static is defined
 
@@ -21,9 +20,8 @@
   microsoft.ad.user:
     name: "{{ item.0.name | replace('##', item.1) }}"
     groups: 
-        set: 
+        add: 
             "{{ item.0.group | replace('##', item.1) }}"
-    state: present
   with_nested:
   - '{{ dc_groupmember_dynamic }}'
   - '{{ range(1, dc_domain_count + 1, 1) | list }}'
