@@ -9,7 +9,7 @@
     groups: 
         add: 
             '{{ item.group }}'
-  with_items: "{{ dc_groupmember }}"
+  with_items: "{{ dc_groupmember_static }}"
   when: dc_groupmember_static is defined
 
 #####################################
