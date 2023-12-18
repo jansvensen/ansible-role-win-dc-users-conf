@@ -14,10 +14,10 @@
 
 - name: Add members to the group, preserving existing membership
   microsoft.ad.group:
-    name: '{{ item.group }}'
+    name: '{{ item.0.group }}'
     members:
       add:
-        - '{{ item[1] }}'
+        - '{{ item.1 }}'
     scope: global
   with_items: "{{ dc_groupmember_static | subelements('users') }}"
   when: dc_groupmember_static is defined
