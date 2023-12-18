@@ -19,9 +19,7 @@
       add:
         - '{{ item[1] }}'
     scope: global
-  with_nested: 
-    - "{{ dc_groupmember_static }}"
-    - "{{ dc_groupmember_static.users }}"
+  with_items: "{{ dc_groupmember_static | subelements('users') }}"
   when: dc_groupmember_static is defined
 
 #####################################
