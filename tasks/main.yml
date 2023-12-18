@@ -14,7 +14,7 @@
 
 - name: Add members to the group, preserving existing membership
   microsoft.ad.group:
-    name: '{{ item.[0].group }}'
+    name: '{{ item.group }}'
     members:
       add:
         - '{{ item[1] }}'
