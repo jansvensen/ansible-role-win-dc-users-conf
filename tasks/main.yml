@@ -15,6 +15,7 @@
 - name: Add members to the group, preserving existing membership
   microsoft.ad.group:
     name: '{{ item.group }}'
+    scope: global
     members:
       add:
         - '{{ item.name }}'
