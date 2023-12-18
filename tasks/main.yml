@@ -14,7 +14,7 @@
 
 - name: debug
   debug:
-    msg: "Esxi has ip : {{ item.0.group }} - datastore has path : {{ item.1.path }}"
+    msg: "Esxi has ip : {{ item.0.group }} - datastore has path : {{ item.1.group }}"
   loop: "{{ dc_groupmember_static | subelements('users') }}"
   loop_control:
     label: "Looping datastore {{ item.1.group }} of esxi host {{ item.0.group }} "
