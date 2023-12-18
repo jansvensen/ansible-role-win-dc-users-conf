@@ -3,14 +3,23 @@
 ### Add users to groups statically
 #####################################
 
-- name: Add users to groups statically
-  microsoft.ad.user:
-    name: '{{ item.name }}'
-    groups: 
-        add: 
-            '{{ item.group }}'
-  with_items: "{{ dc_groupmember_static }}"
-  when: dc_groupmember_static is defined
+#- name: Add users to groups statically
+#  microsoft.ad.user:
+#    name: '{{ item.name }}'
+#    groups: 
+#        add: 
+#            '{{ item.group }}'
+#  with_items: "{{ dc_groupmember_static }}"
+#  when: dc_groupmember_static is defined
+
+- name: Add members to the group, preserving existing membership
+  microsoft.ad.group:
+    name: item.group
+    members:
+      add:
+        - '{{ item.name }}'
+    with_items: "{{ dc_groupmember_static }}"
+    when: dc_groupmember_static is defined
 
 #####################################
 ### Add users to groups dynamically
