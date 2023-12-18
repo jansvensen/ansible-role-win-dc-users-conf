@@ -19,7 +19,7 @@
       add:
         - '{{ item }}'
     scope: global
-    loop: '{{ item.users}}'
+  loop: '{{ item.users}}'
   with_items: "{{ dc_groupmember_static }}"
   when: dc_groupmember_static is defined
 
