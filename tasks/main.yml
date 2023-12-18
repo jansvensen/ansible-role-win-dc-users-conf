@@ -18,6 +18,7 @@
     members:
       add:
         - '{{ item.name }}'
+    scope: global
   with_items: "{{ dc_groupmember_static }}"
   when: dc_groupmember_static is defined
 
